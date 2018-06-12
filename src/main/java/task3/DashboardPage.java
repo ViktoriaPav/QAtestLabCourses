@@ -17,34 +17,18 @@ public class DashboardPage extends PageObject {
     @FindBy(id = "subtab-AdminCatalog")
     private WebElement menuCatalog;
 
-    @FindBy(css = "ps_back-office .title")
-    WebElement subMenuCatalogFirstGoods;
+    @FindBy(id = "subtab-AdminProducts")
+    WebElement subMenuCatalogFirstProducts;
 
-    @FindBy(linkText = "/admin147ajyvk0/index.php/product/catalog?_token=2ChAmxscOp-yxA4NwvHOYsqOqVwNDRcvmtqz64c_zQM")
+    @FindBy(id = "subtab-AdminCategories")
     private WebElement subMenuCatalogCategory;
 
-    /*
-    <a href="http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/index.php?controller=AdminCategories&amp;token=795a6350b3a0f87af2a165b4c1a34372" class="title">
-															категории														</a>
 
-        <a href="/admin147ajyvk0/index.php/product/catalog?_token=2ChAmxscOp-yxA4NwvHOYsqOqVwNDRcvmtqz64c_zQM" class="title has_submenu">
-                                            <i class="material-icons">store</i>
-                                            <span>
-        Каталог										</span>
-                                        </a>
-    */
     public void clickOnCatalogCategory() {
         Actions builder = new Actions(driver);
-
         builder.moveToElement(menuCatalog);
-        builder.moveToElement(subMenuCatalogFirstGoods);
-        builder.moveToElement(subMenuCatalogCategory);
-        builder.click().perform();
-
-    }
-
-    public void clickOnMenuCatalog() {
-        menuCatalog.click();
+        builder.moveToElement(subMenuCatalogFirstProducts);
+        builder.moveToElement(subMenuCatalogCategory).click().build().perform();
     }
 
     public boolean logout() {

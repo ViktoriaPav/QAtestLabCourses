@@ -8,9 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class FunctionalTest {
-    /*protected static WebDriver driver;
-
-//@BeforeClass
+   // protected static WebDriver driver;
+/*
+@BeforeClass
     public static void setUp(){
     System.setProperty("webdriver.chrome.driver", FunctionalTest.class.getResource("/chromedriver.exe").getPath());
     driver = new ChromeDriver();
@@ -25,5 +25,5 @@ public class FunctionalTest {
 public static void tearDown(){
         driver.close();
 }
-*/
+//*/
 }

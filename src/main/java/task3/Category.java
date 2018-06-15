@@ -1,8 +1,11 @@
 package task3;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Category extends PageObject {
 
@@ -18,17 +21,16 @@ public class Category extends PageObject {
     @FindBy(id = "submitFilterButtoncategory")
     private WebElement submitFilterButtonCategory;
 
-
-
     public void filterCategory(String name){
         categoryFilter.sendKeys(name);
         submitFilterButtonCategory.click();
     }
 
     public boolean verifyMessage() {
-        String message = successfulMessage.getText();
-        if (message.contains("Создано")) {
-            System.out.println("true" + message);
+        WebElement dynamicElement = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.className("alert-success")));
+        if (dynamicElement.isDisplayed()) {
+            System.out.println("true");
             return true;
         } else {
             System.out.println("false");

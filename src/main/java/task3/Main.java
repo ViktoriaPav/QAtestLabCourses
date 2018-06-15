@@ -18,12 +18,13 @@ public class Main {
 
         System.setProperty("webdriver.chrome.driver", Main.class.getResource("/chromedriver.exe").getPath());
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         /*e_driver = new EventFiringWebDriver(driver);
         eventListener = new WebEventListener();
         e_driver.register(eventListener);
-*/
+        */
+
         driver.get("http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/");
 
         LoginPage loginPage = new LoginPage(driver);

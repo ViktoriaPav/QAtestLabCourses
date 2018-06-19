@@ -1,4 +1,4 @@
-package Task4;
+package task4;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

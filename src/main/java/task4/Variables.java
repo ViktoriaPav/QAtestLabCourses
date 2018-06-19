@@ -1,4 +1,4 @@
-package Task4;
+package task4;
 
 public interface Variables {
      public static final String LOGIN = "webinar.test@gmail.com";

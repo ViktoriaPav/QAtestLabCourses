@@ -1,5 +1,6 @@
 package task4;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Helper {
@@ -15,6 +16,7 @@ public class Helper {
     }
 
     public static Double randomDouble(Double min, Double max){
-        return min + (max - min) * random.nextDouble();
+        String formatDouble = new DecimalFormat("0.00").format(min + (max - min) * random.nextDouble());
+        return Double.parseDouble(formatDouble);
     }
 }

@@ -5,6 +5,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +28,31 @@ public class ProductPage extends PageObject {
     @FindBy(name = "filter_column_name")
     WebElement nameFilterField;
 
+    @FindBy(name = "products_filter_submit")
+    WebElement productFilterButton;
+
+    @FindBy(name = "filter_column_name_category")
+    WebElement categoryFilterField;
+
+
+
     public void clickOnNewProductButton() {
         newProductButton.click();
     }
 
-    public Product filterProduct(Product product) {
+    public void filterProduct(Product product) {
+        nameFilterField.clear();
         nameFilterField.sendKeys(product.getName());
-        nameFilterField.sendKeys(Keys.ENTER);
-        Product filterProduct = new Product(columnName.getText(), Integer.valueOf(columnQuantity.getText()), Double.parseDouble(columnPrice.getText().replace(",", ".").replace("₴", "")));
-        return filterProduct;
-    }
+        categoryFilterField.sendKeys("");
+        WebElement dynamicFilterButton = (new WebDriverWait(driver, 15)).until(ExpectedConditions.elementToBeClickable(productFilterButton));
+        dynamicFilterButton.click();
 
+
+    }
+public Product firstProduct(){
+    Product filterProduct = new Product(columnName.getText(), Integer.valueOf(columnQuantity.getText()), Double.parseDouble(columnPrice.getText().replace(",", ".").replace("₴", "")));
+    return filterProduct;
+}
 
     public List<Product> getAllProductsOnThePage() {
         List<WebElement> allId = driver.findElements(By.xpath("//tr/td[1]"));

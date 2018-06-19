@@ -31,7 +31,7 @@ public class AddNewProductTest extends FunctionalTest {
 
     @Test
     public void checkNewProduct() {
-
+        Product actualProduct = null;
         LoginTest loginTest = new LoginTest();
         loginTest.loginTest();
 
@@ -41,7 +41,8 @@ public class AddNewProductTest extends FunctionalTest {
         driver.navigate().refresh();
         ProductPage productPage = new ProductPage(driver);
         productPage.filterProduct(randomProduct);
-        assertEquals(productPage.filterProduct(randomProduct), randomProduct);
+        actualProduct = productPage.firstProduct();
+        assertEquals(actualProduct, randomProduct);
 
         /*
         List<Product> productList = productPage.getAllProductsOnThePage();

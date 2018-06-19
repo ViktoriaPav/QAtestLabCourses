@@ -35,8 +35,8 @@ public class FunctionalTest extends Assert {
         System.setProperty("webdriver.chrome.driver", FunctionalTest.class.getResource("/chromedriver.exe").getPath());
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-    }*/
-
+    }
+*/
     @AfterMethod
     public static void cleanUp() {
         driver.manage().deleteAllCookies();

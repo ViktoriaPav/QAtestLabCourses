@@ -11,7 +11,7 @@ public class Helper {
     }
 
     public static String randomString() {
-        String string = "TestString";
+        String string = "teststring";
         return string + randomInteger(99999999);
     }
 

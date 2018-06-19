@@ -31,31 +31,16 @@ public class AddNewProductTest extends FunctionalTest {
 
     @Test
     public void checkNewProduct() {
-        Product actualProduct = null;
-        LoginTest loginTest = new LoginTest();
-        loginTest.loginTest();
 
-        DashboardPage dashboardPage = new DashboardPage(driver);
-        dashboardPage.clickOnCatalog();
+        driver.get("http://prestashop-automation.qatestlab.com.ua/ru/");
+        HomePage homePage = new HomePage(driver);
+        homePage.clickAllProductsButton();
 
-        driver.navigate().refresh();
-        ProductPage productPage = new ProductPage(driver);
-        productPage.filterProduct(randomProduct);
-        actualProduct = productPage.firstProduct();
+        ProductsPageBeforeLogging productsPageBeforeLogging = new ProductsPageBeforeLogging(driver);
+        productsPageBeforeLogging.searchProduct(randomProduct);
+
+        ProductBeforeLoggingPage productBeforeLoggingPage = new ProductBeforeLoggingPage(driver);
+        Product actualProduct = productBeforeLoggingPage.actualProduct();
         assertEquals(actualProduct, randomProduct);
-
-        /*
-        List<Product> productList = productPage.getAllProductsOnThePage();
-
-        Product createdProduct = null;
-        for (Product product : productList) {
-            if (product.equals(randomProduct)) {
-                createdProduct = product;
-                System.out.println(createdProduct.toString());
-                break;
-            }
-        }
-        assertEquals(createdProduct, randomProduct, "Products are not equals");
-        */
     }
 }

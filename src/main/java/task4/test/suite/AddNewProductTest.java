@@ -1,21 +1,19 @@
 package task4.test.suite;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import task4.*;
-
-import java.util.List;
 
 public class AddNewProductTest extends FunctionalTest {
 
     private Product randomProduct = new Product(Helper.randomString(), Helper.randomInteger(100), Helper.randomDouble(0.1, 100.0));
 
-    @Test
+    @Test()
     public void addNewProduct() throws InterruptedException {
 
         randomProduct = new Product(Helper.randomString(), Helper.randomInteger(100), Helper.randomDouble(0.1, 100.0));
+
         LoginTest loginTest = new LoginTest();
-        loginTest.loginTest();
+       loginTest.loginTest();
 
         DashboardPage dashboardPage = new DashboardPage(driver);
         dashboardPage.clickOnSubMenuCatalogProduct();
